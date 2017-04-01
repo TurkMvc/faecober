@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){          //gruplama
+    Route::get('/', 'HomeController@get_admin');
+});
+//    Route::group(['prefix'=>'admin','middleware'=>['admin','moderator']]); // şeklindede olabilir

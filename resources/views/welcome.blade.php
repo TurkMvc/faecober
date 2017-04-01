@@ -79,7 +79,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    @if($errors->any()) <!-- yetkimiz yoksa yazsın -->
+                        {{ $errors->first(1)}}
+                    @else
+                        Laravel
+                    @endif
                 </div>
 
                 <div class="links">

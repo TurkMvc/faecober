@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return $this->isadmin; // user ın isadmin ini çağırırsak isadmin i yolluyor
+    }
 }
