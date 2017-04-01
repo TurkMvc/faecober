@@ -26,7 +26,7 @@
     <link href="/backend/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="/backend/build/css/custom.min.css" rel="stylesheet">
     @yield('css')
 </head>
 

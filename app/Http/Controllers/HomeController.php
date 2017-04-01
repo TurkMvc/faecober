@@ -28,6 +28,6 @@ class HomeController extends Controller
 
     public function get_admin()
     {
-        return view('admin');
+        return view('backend.pages.anasayfa');
     }
 }
