@@ -20,5 +20,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::group(['prefix'=>'admin','middleware'=>'admin'],function (){          //gruplama
     Route::get('/', 'HomeController@get_admin');
+    Route::get('/dashboard', 'HomeController@get_admin');
+    Route::get('/haber/haber-ekle', 'AdminController@get_haberEkle');
+    Route::post('/haber/haber-ekle', 'AdminController@post_haberEkle');
 });
 //    Route::group(['prefix'=>'admin','middleware'=>['admin','moderator']]); // şeklindede olabilir
+
+
