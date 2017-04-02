@@ -17,7 +17,6 @@
     <link href="/backend/vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="/backend/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-
     <!-- bootstrap-progressbar -->
     <link href="/backend/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- JQVMap -->
@@ -27,7 +26,7 @@
 
     <!-- Custom Theme Style -->
     <link href="/backend/build/css/custom.min.css" rel="stylesheet">
-    @yield('css')
+@yield('css')
 </head>
 
 <body class="nav-md">
@@ -327,11 +326,11 @@
 <!-- bootstrap-daterangepicker -->
 <script src="/backend/vendors/moment/min/moment.min.js"></script>
 <script src="/backend/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
+@yield('js')
 <!-- Custom Theme Scripts -->
-<script src="/backend/build/js/custom.min.js"></script>
+<script src="/backend/build/js/custom.js"></script>
 
-    @yield('')
+
 
 </body>
 </html>
