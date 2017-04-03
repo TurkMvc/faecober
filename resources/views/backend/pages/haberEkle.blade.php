@@ -47,7 +47,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="first-name" name="baslik" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="first-name" name="baslik" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -97,13 +97,23 @@
                 },
 
                 success:function (response) {
-                    swal(
-                        'Tebrikler',
-                        'Başarılı bir şekilde kaydedildi.',
-                        'success'
-                    );
-                    document.getElementById("demo-form2").reset();
-                    $('.btn-success').fadeIn();
+                    if(response.code==200){
+                        swal(
+                            response.baslik,
+                            response.icerik,
+                            'success'
+                        );
+                        document.getElementById("demo-form2").reset();
+                        $('.btn-success').fadeIn();
+                    }
+                    else{
+                        swal(
+                            response.baslik,
+                            response.icerik,
+                            'error'
+                        );
+                        $('.btn-success').fadeIn();
+                    }
                 },
                 beforeSerialize:function () {
                     for ( instance in CKEDITOR.instances )
