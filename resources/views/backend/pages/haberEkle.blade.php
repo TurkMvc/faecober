@@ -50,12 +50,22 @@
                                         <input type="text" id="first-name" name="baslik" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
+
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">İçerik
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <textarea type="text" id="last-name" name="icerik" required="required" class="form-control ckeditor col-md-7 col-xs-12"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Resim
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="file" name="resim" required>
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
