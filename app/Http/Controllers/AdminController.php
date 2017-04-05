@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Haber;
-
+use App\Http\Requests;
 use Auth;
+use Carbon\Carbon;
+use Faker\Provider\DateTime;
 use Storage;
 use Validator;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Illuminate\Support\Facades\Input;
-use Intervention\Image\Image;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
@@ -43,13 +43,20 @@ class AdminController extends Controller
         }
         if(Input::file('resim')->isValid())
         {
+            $slug=str_slug($request->baslik);
+            if (Haber::where('slug',str_slug($request->baslik))->count()>0){
+                $now = str_slug(Carbon::now());
+                $slug = $slug.'-'.$now;
+            }
             $file=Input::file('resim');
-            $destinationPath="img/haber".str_slug($request->baslik);
-            $extention=Input::file('resim')->getClientOriginalExtension();
-            $fileName=str_slug($request->baslik).'.'.$extention;
+            $destinationPath="img/haber/".$slug;
+            $extension=Input::file('resim')->getClientOriginalExtension();
+            $fileName=str_slug($request->baslik).'.'.$extension;
             Storage::disk('uploads')->makeDirectory($destinationPath);
-            Image::make($file->getRealPath()->resize(300,300)->save('uploads/'.$destinationPath.'/'.$fileName));
-            $request->merge(['kullanici_id'=>Auth::user()->id, 'slug'=>str_slug($request->baslik)]);
+            Image::make($file->getRealPath())->resize(300,300)
+                    ->save(storage_path('uploads/'.$destinationPath.'/'.$fileName));
+
+            $request->merge(['kullanici_id'=>Auth::user()->id, 'slug'=>$slug]);
             Haber::create($request->all());
             return response([
                 'baslik'=>'Başarılı',
